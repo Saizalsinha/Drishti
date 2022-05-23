@@ -1,7 +1,7 @@
 .front-girl{
     width: 25%;
     position: absolute;
-    left: 55%;
+    left: 58%;
     z-index: 1;
 }
 
@@ -10,7 +10,7 @@
     color: white;
     position: absolute;
     width: 8rem;
-    left: 78%;
+    left: 81%;
     z-index: 2;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;

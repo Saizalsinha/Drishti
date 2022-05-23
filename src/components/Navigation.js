@@ -8,7 +8,7 @@ function Navigation() {
         <img
           className="logo"
           alt="logo"
-          src="https://i.ibb.co/XYTqVP8/DRISHTI-Logo.png"
+          src="https://i.ibb.co/5G7ZRqg/Logo-cropped.png"
         />
       </Link>
 
@@ -34,3 +34,13 @@ function Navigation() {
 
 export default Navigation;
 
+
+// Full Logo link
+// <img
+//           className="logo"
+//           alt="logo"
+//           src="https://i.ibb.co/XYTqVP8/DRISHTI-Logo.png"
+//         />
+
+// Cropped logo link
+// <a href="https://ibb.co/xX4Z7Vt"><img src="https://i.ibb.co/5G7ZRqg/Logo-cropped.png" alt="Logo-cropped" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'>rob zombie cd review</a><br />

@@ -3,6 +3,7 @@
     display: inline-block;
     position: absolute;
     left: 5rem;
+    top: 1.5rem;
 }
 
 .nav{
@@ -18,12 +19,18 @@
     padding: 0;
     overflow: hidden;
     position: absolute;
-    left: 30rem;
-    width: 500px;
+    left: 34rem;
+    width: 600px;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 20px;
+    
+    letter-spacing: 0.03em;
  }
   
   li {
     float: left;
+    padding: 2rem 0.7rem;
   }
   
   li a {
@@ -31,6 +38,7 @@
     text-align: center;
     padding: 16px;
     text-decoration: none;
+    color: black !important;
   }
 
 
