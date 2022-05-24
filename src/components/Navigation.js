@@ -18,10 +18,12 @@ function Navigation() {
             <Link to="/Virtual-eye">Virtual Eye</Link>
           </li>
           <li>
-            <Link to="/">Maps</Link>
+            {/* <Link to="/"> */}
+            <a href="http://localhost:5000/">Maps</a>
+            {/* </Link> */}
           </li>
           <li>
-            <Link to="/">Eye Care</Link>
+            <Link to="/Virtual-eye/Object-recognition">Eye Care</Link>
           </li>
           <li>
             <Link to="/">About Us</Link>
