@@ -1,6 +1,6 @@
-import "./VirtualeyePage.css";
+import "./Vision.css";
 
-function VirtualeyePage() {
+function Vision() {
   return (
     <div className="vir-div">
       <h1 className="vir-h1">Meet your virtual eyes with DRISHTI</h1>
@@ -29,4 +29,4 @@ function VirtualeyePage() {
   );
 }
 
-export default VirtualeyePage;
+export default Vision;

@@ -20,6 +20,7 @@ function ObjectRecognition() {
     }, 10);
   };
 
+
   const detect = async (net) => {
     // Check data is available
     if (
@@ -45,19 +46,46 @@ function ObjectRecognition() {
 
       // Draw mesh
       const ctx = canvasRef.current.getContext("2d");
-      let speech = new SpeechSynthesisUtterance();
-      speech.lang = "en";
-      speech.text = obj[0]["class"];
-      setInterval(function () {
-        window.speechSynthesis.speak(speech);
-        console.log("Hello saiz");
-      }, 10000);
-      // window.speechSynthesis.pause();
-      // console.log(obj[0]["class"]);
+     
+      // document.querySelector("#but").addEventListener("click", () => {
+
+      //   const imgSrc = webcamRef.current.getScreenshot();
+      //   console.log(imgSrc);
+
+        // let speech = new SpeechSynthesisUtterance();
+        // speech.lang = "en";
+        // obj.forEach((prediction) => {
+        //   const text = prediction["class"];
+        //   speech.text = text;
+        //   window.speechSynthesis.speak(speech);
+        // })
+        
+        
+        // setTimeout(()=>{
+        //   window.speechSynthesis.cancel();
+
+        // },5000)
+      // });
+
+
+    //  console.log(ctx);
       drawRect(obj, ctx);
     }
   };
+  const capture = async () =>{
+    console.log("Hello");
+    const net = await cocossd.load();
+    const video = webcamRef.current.video;
+    const obj = await net.detect(video);
 
+    let speech = new SpeechSynthesisUtterance();
+    speech.lang = "en";
+    obj.forEach((prediction) => {
+      const text = prediction["class"];
+      speech.text = text;
+      window.speechSynthesis.speak(speech);
+    })
+  };
   useEffect(() => {
     runCoco();
   }, []);
@@ -95,6 +123,19 @@ function ObjectRecognition() {
             height: 480,
           }}
         />
+        <button
+          id="but"
+          onClick={capture}
+          style={{
+            position: "absolute",
+            marginLeft: "auto",
+            marginRight: "auto",
+            top: 100,
+            right: 0,
+          }}
+        >
+          Submit
+        </button>
       </header>
     </div>
   );

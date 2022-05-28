@@ -2,12 +2,13 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Homepage from "./pages/Homepage";
-import VirtualeyePage from "./pages/VirtualeyePage";
+import Vision from "./pages/Vision";
 import Navigation from "./components/Navigation";
 import ObjectRecognition from "./pages/ObjectRecognition";
-import FaceRecognition from "./FaceRecognition";
+
 
 function App() {
+
   return (
     <div>
     <Navigation/>
@@ -15,11 +16,10 @@ function App() {
         
           <Route path="/" element={<Homepage />} exact />
           
-          <Route path="/Virtual-eye" element={<VirtualeyePage />} />
+          <Route path="/Vision" element={<Vision />} />
 
-          <Route path="/Virtual-eye/Object-recognition" element={<ObjectRecognition />} />
+          <Route path="/Vision/Object-recognition" element={<ObjectRecognition />} />
 
-          {/* <Route path="/Virtual-eye/Face-recognition" element={<FaceRecognition />} /> */}
         
       </Routes>
     </div>
@@ -27,4 +27,3 @@ function App() {
 }
 
 export default App;
-
