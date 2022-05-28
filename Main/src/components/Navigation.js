@@ -4,6 +4,7 @@ import "./Navigation.css";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+import {ClickIt} from "../ClickIt";
 
 function Navigation() {
   const { transcript, resetTranscript } = useSpeechRecognition();
@@ -23,7 +24,7 @@ function Navigation() {
         speech.text = "Going to " + transcript + " page";
         window.speechSynthesis.speak(speech);
         // document.getElementsByClassName(transcript)[0].click();
-        
+        ClickIt(transcript);
       } else{
         let speech = new SpeechSynthesisUtterance();
         speech.text = "No such page found";
@@ -46,10 +47,10 @@ function Navigation() {
         <ul>
           <li id="vision">
             <Link to="/Vision">Vision</Link>
+            {/* <a  href="http://localhost:3000/vision">Vision</a> */}
           </li>
-          <li>
-            {/* <Link to="/Virtual-eye/Face-recognition">Maps</Link> */}
-            <a href="http://localhost:3001/">Maps</a>
+          <li id="read">
+            <Link to="/Vision/Read-Text">Read Text</Link>
           </li>
           <li>
             <Link to="/">Eye Care</Link>
@@ -59,7 +60,9 @@ function Navigation() {
           </li>
         </ul>
         <Link id="object" to="/Vision/Object-recognition"></Link>
+        <Link id="home" to="/"></Link>
         <a id="face" href="http://localhost:3001/"></a>
+        <a id="click"></a>
       </nav>
     </header>
   );

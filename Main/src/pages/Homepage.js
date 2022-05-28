@@ -1,5 +1,6 @@
 import "./Homepage.css";
 import ButtonBlue from "../components/ButtonBlue";
+import { Link } from "react-router-dom";
 
 function Homepage() {
   return (
@@ -12,8 +13,8 @@ function Homepage() {
           className="logo-leaf"
         />
         <h1 className="home-h1">Enhance your vision with us</h1>
-
-        <ButtonBlue text="Get Started" />
+        <Link to="/Virtual-eye"><div className="home-btn"><ButtonBlue text="Get Started" /></div></Link>
+        
       </div>
       <div className="front-rect">Meet your Virtual eyes with Drishti.</div>
       <img

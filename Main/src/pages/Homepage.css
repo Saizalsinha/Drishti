@@ -5,6 +5,12 @@
   z-index: 1;
 }
 
+.home-btn{
+  position: absolute;
+  top: 28rem;
+  left: 5rem;
+}
+
 .front-rect {
   background-color: #7bb1be;
   color: white;

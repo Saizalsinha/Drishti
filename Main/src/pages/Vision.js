@@ -4,7 +4,7 @@ function Vision() {
   return (
     <div className="vir-div">
       <h1 className="vir-h1">Meet your virtual eyes with DRISHTI</h1>
-      <a href="/Virtual-eye/Object-recognition">
+      <a href="/Vision/Object-recognition">
         <button className="but-obj">
           <h4>Object Recognition</h4>
           <img

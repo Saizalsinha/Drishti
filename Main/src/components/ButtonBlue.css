@@ -4,9 +4,7 @@
   border: none;
   font-family: "Roboto";
   font-weight: 700;
-  position: absolute;
-  top: 28rem;
-  left: 5rem;
+  
   width: 12rem;
   border-radius: 5px;
 }

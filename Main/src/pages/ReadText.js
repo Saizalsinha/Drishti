@@ -1,17 +1,15 @@
-// Import dependencies
 import React, { useRef, useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as cocossd from "@tensorflow-models/coco-ssd";
 import Webcam from "react-webcam";
-import "./ObjectRecognition.css";
-import { drawRect } from "../utilities";
+import "./ReadText.css";
+import { createWorker } from "tesseract.js";
 import ButtonBlue from "../components/ButtonBlue";
 
-
-function ObjectRecognition() {
+function ReadText() {
+    
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-
   // Main function
   const runCoco = async () => {
     const net = await cocossd.load();
@@ -21,7 +19,6 @@ function ObjectRecognition() {
       detect(net);
     }, 10);
   };
-
 
   const detect = async (net) => {
     // Check data is available
@@ -48,26 +45,31 @@ function ObjectRecognition() {
 
       // Draw mesh
       const ctx = canvasRef.current.getContext("2d");
-     
-      drawRect(obj, ctx);
     }
   };
 
-   const Capture = async () =>{
-    console.log("Hello");
-    const net = await cocossd.load();
-    const video = webcamRef.current.video;
-    const obj = await net.detect(video);
-  
-    let speech = new SpeechSynthesisUtterance();
-    speech.lang = "en";
-    obj.forEach((prediction) => {
-      const text = prediction["class"];
+  const takeURL = () =>  {
+    const imgSrc = webcamRef.current.getScreenshot();
+    const worker = createWorker({
+      logger: (m) => console.log(m.progress),
+    });
+
+    (async () => {
+      await worker.load();
+      await worker.loadLanguage("eng");
+      await worker.initialize("eng");
+      const {
+        data: { text },
+      } = await worker.recognize(imgSrc);
+      console.log(text);
+      let speech = new SpeechSynthesisUtterance();
+      speech.lang = "en";
       speech.text = text;
       window.speechSynthesis.speak(speech);
-    })
+      await worker.terminate();
+    })();
   };
-  
+
   useEffect(() => {
     runCoco();
   }, []);
@@ -75,6 +77,7 @@ function ObjectRecognition() {
   return (
     <div className="App">
       <header className="App-header">
+      
         <Webcam
           ref={webcamRef}
           muted={true}
@@ -82,6 +85,7 @@ function ObjectRecognition() {
             position: "absolute",
             marginLeft: "auto",
             marginRight: "auto",
+            top: 120,
             left: 0,
             right: 0,
             textAlign: "center",
@@ -105,27 +109,15 @@ function ObjectRecognition() {
             height: 480,
           }}
         />
-        <div id="but"
-          onClick={Capture}>
-            <ButtonBlue text="Identify"></ButtonBlue>
+        
+        <div  id="read-but"
+          onClick={takeURL}>
+              <ButtonBlue text="Click"></ButtonBlue>
           </div>
-        {/* <button
-          id="but"
-          onClick={Capture}
-          style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            top: 100,
-            right: 0,
-          }}
-        >
-          Submit
-        </button> */}
       </header>
     </div>
   );
 }
 
-export default ObjectRecognition;
-
+export default ReadText;
+// export {takeURL};
